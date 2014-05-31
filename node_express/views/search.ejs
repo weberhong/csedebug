@@ -1,0 +1,87 @@
+<div class="">
+<form class="form-horizontal" method=GET>
+    <p>
+    Query:<input type="text" name=query value="<%= reqquery.query %>" class="input search-query">
+    <button type="submit" class="btn btn-primary">搜</button>
+    debug:
+    <label class="checkbox inline">
+        <% if (reqquery.isdebug == "1" ){ %>
+        <input type="checkbox" name="isdebug" value="1" checked>
+        <% } else { %>    
+        <input type="checkbox" name="isdebug" value="1">
+        <% } %>
+    </label>
+    host:<input type=text name=host class="input-medium" value="<%= reqquery.host %>" >
+    port:<input type=text name=port class="input-mini" value="<%= reqquery.port %>" >
+    pn:<input type=text name=pn class="input-mini" value="<%= reqquery.pn %>" >
+    rn:<input type=text name=rn class="input-mini" value="<%= reqquery.rn %>" >
+    dump:
+    <label class="checkbox inline">
+        <% if (reqquery.dump == "1"){ %>
+        <input type="checkbox" name="dump" value="1" checked>
+        <% } else { %>    
+        <input type="checkbox" name="dump" value="1">
+        <% } %>
+    </label>
+    </p>
+</form>
+</div>
+
+<div id="cmpdebugdiv" class="" style="display:none">
+    <div class="row">
+        <div id="cmpbartable">
+             <table class="table table-bordered table-condensed">
+                 <thead></thead>
+                 <tbody></tbody>
+            </table>
+       </div>
+    </div>
+
+    <div class="row">
+        <div id="cmpbarchart"></div>
+    </div>
+
+    <div class="row">
+        <div id="diffbartable">
+             <table class="table table-bordered table-condensed">
+                 <thead></thead>
+                 <tbody></tbody>
+            </table>
+       </div>
+    </div>
+
+    <div class="row">
+        <div id="diffbarchart"></div>
+    </div>
+
+</div>
+
+
+
+<div class="">
+    <% var obj = cse_res %>
+    <%- partial('pagination',{ cse_res : cse_res ,dispNum : obj.dispNum}) %>
+
+    <div class="row">
+    <% if (reqquery.dump == 1) { %>
+
+        <%- partial('htmldump',{ doc : cse_res }) %>
+
+    <% } else { %>
+
+        <% for(var i=0; i<obj.retNum;++i) { %>
+            <div class="span12">
+                <%- partial('doc', { index : i,doc : obj['result' + i ] }) %>
+            </div>
+        <% } %>
+
+    <% } %>
+    </div>
+    <%- partial('pagination',{ cse_res : cse_res ,dispNum : obj.dispNum}) %>
+
+</div>
+
+
+<%- partial('querydebug',{ cse_res : cse_res }) %>
+
+<%- partial('cmpbar',{ cse_res : cse_res }) %>

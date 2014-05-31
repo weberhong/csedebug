@@ -1,0 +1,11 @@
+{
+    "appenders" : [
+    {
+        "type" : "file",
+        "filename" : "log/search.log",
+        "maxLogSize": 10240000,
+        "backups" : 4,
+        "category" : "normal"
+    }
+    ]
+}

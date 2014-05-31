@@ -1,0 +1,16 @@
+{
+  "name": "Cse-Debug-Tool",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.2.6",
+    "express-partials":"*",
+    "connect-flash":"*",
+    "ByteBuffer":"*",
+    "log4js" : "*",
+    "ejs": "*"
+  }
+}

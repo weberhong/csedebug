@@ -1,0 +1,50 @@
+<% resultkey = "resultkey" + (index+1) %>
+<div id='<%= resultkey %>' class="row">
+    <%= index+1 %>.
+    <img id="icon<%= resultkey %>" src="<%= doc.cse_data.icon %>">
+    title : <%= doc.cse_data.title %>
+
+    <% if (doc.debugInfo) { %>
+    <label class="inline checkbox">
+        <input type="checkbox" onclick="cmpcheck(this,'<%= resultkey %>','<%= doc.cse_data.title %>','<%= doc.weightInfo.weight %>')">对比
+    </label>
+    <% } %>
+
+</div>
+
+<div class="row">
+    <ul class="nav nav-tabs" id="docTab<%= resultkey %>">
+        <li class="active"><a href="#rank<%= resultkey %>" data-toggle="tab">Rank</a></li>
+        <li><a href="#data<%= resultkey %>" data-toggle="tab">Data</a></li>
+        <li><a href="#docparse<%= resultkey %>" data-toggle="tab">DocParse</a></li>
+    </ul>
+
+
+    <div class="tab-content">
+        <div class="tab-pane active in" id="rank<%= resultkey %>">
+            <table class="table table-bordered table-condensed table-hover">
+                <tbody>
+                <tr>
+                    <td>bweight : <%= doc.weightInfo.bweight %> </td>
+                    <td>weight : <%= doc.weightInfo.weight %> </td>
+                </tr>
+                </tbody>
+            </table>
+            <% if (doc.debugInfo) { %>
+            <div class="div-bordered">
+                <%- partial('bsdebug',{ bsdebug: doc.debugInfo ,keyid : resultkey}) %>
+            </div>
+            <% } %>
+
+        </div>
+        <div class="tab-pane fade" id="docparse<%= resultkey %>">
+            <div class="div-bordered">
+            </div>
+        </div>
+        
+        <div class="tab-pane fade" id="data<%= resultkey %>">
+            <%- partial('jsondump',{ doc : doc.cse_data}) %>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <title><%= title %> - Vertical Search</title>
+        <style type="text/css">
+            body {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        </style>
+        <link rel='stylesheet' href='http://libs.baidu.com/bootstrap/2.3.1/css/bootstrap.min.css' />
+        <link rel='stylesheet' href='http://libs.baidu.com/bootstrap/2.3.1/css/bootstrap-responsive.min.css' />
+        <link href="stylesheets/as.css" rel="stylesheet">
+        <link href="stylesheets/grumble.css" rel="stylesheet">
+
+        <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+        <script src="/javascripts/Bubble.js"></script>
+        <script src="/javascripts/jquery.grumble.js"></script>
+    </head>
+    <body>
+        <div id="container" class="container">
+            <% if (locals.success) { %>
+            <div class="alert alert-success">
+                <%= locals.success %>
+            </div>
+            <% } %>
+
+            <% if (locals.error) { %>
+            <div class="alert alert-error">
+                <%= locals.error %>
+            </div>
+            <% } %>
+
+            <% if (locals.flasherror) { %>
+            <div class="alert alert-error">
+                <%= locals.flasherror %>
+            </div>
+            <% } %>
+
+
+            <div class="row span12">
+            <%- body %>
+            </div>
+
+        </div>
+    </body>
+    <script src="http://libs.baidu.com/bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script src="/javascripts/utils.js"></script>
+    <script src="/javascripts/cmp.js"></script>
+</html>

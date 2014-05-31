@@ -1,0 +1,50 @@
+.asdebugbtn{position:fixed;left:15px;top:300px;}
+
+.div-bordered {
+  border: 1px solid #dddddd;
+  border-collapse: separate;
+  *border-collapse: collapse;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+#rankcmpbar {
+    display : none;
+}
+
+.rankcmp{
+    border-right:1px solid  #dddddd;
+    height:100px;
+}
+
+.rankcmp .icon {
+    padding-top : 10%;
+    width : 30%;
+    height : 100%;
+}
+.rankcmp .cmpinfo {
+    padding-top : 10%;
+    width : 60%;
+    height : 100%;
+}
+
+.rankcontrol{
+    border-right:1px solid  #dddddd;
+    height:100px;
+}
+
+
+.rankcontrol .operator {
+    padding-top : 15%;
+}
+
+.hilight {
+    color : red;
+}
+
+.AutoNewline
+{
+word-break: break-all;/*必须*/
+}
+

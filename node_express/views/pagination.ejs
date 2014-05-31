@@ -1,0 +1,18 @@
+<div class="pagination">
+  <ul>
+    <% if (cse_res.firstPageUrl) { %>
+        <li><a href='<%= cse_res.firstPageUrl.url %>'>0</a></li>
+        <li><span>..</span></li>
+    <% } %>
+    <% for(var i = 0; cse_res.pagelist && i < cse_res.pagelist.length; ++i) { %>
+        <% if (cse_res.pagelist[i].url.length) { %>
+            <li><a href='<%= cse_res.pagelist[i].url %>'><%= cse_res.pagelist[i].name %></a></li>
+        <% } else { %>
+            <li><span><%= cse_res.pagelist[i].name %></span></li>
+        <% } %>
+    <% } %>
+    <% if (dispNum) { %>
+        <em>检索返回了<%= dispNum %>个结果</em>
+    <% } %>
+  </ul>
+</div>

@@ -1,0 +1,50 @@
+<% if (cse_res.isdebug) { %>
+<div class="asdebugbtn">
+    <a class="btn btn-mini btn-danger" href='#querydebugmodal' role="button" data-toggle='modal'>AsDebug</a>
+</div>
+<div id="querydebugmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h3>Query分析信息</h3>
+    </div>
+    <div class="modal-body">
+        <ul class="nav nav-tabs" id="">
+            <li class="active"><a href="#asdebugtermimp" data-toggle="tab">Term重要性</a></li>
+        </ul>
+        <div class="tab-content">
+
+            <div class="tab-pane active in" id="asdebugtermimp">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td>term</td>
+                            <td>attr</td>
+                            <td>omit</td>
+                            <td>weight</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% for(var i = 0; i < cse_res.debugInfo.queryDebugLog.length; ++i) { %>
+                    <%
+                    var row = cse_res.debugInfo.queryDebugLog[i].match(/term\[(.*?)\]\sattr\[(\d*)\]\somit\[(.*?)\]\sweight\[(.*?)\]/);
+                    %>
+                    <% if (row) { %>
+                    <tr>
+                    <td><%= row[1] %></td>
+                    <td><%= row[2] %></td>
+                    <td><%= row[3] %></td>
+                    <td><%= row[4] %></td>
+                    <% } %>
+                    </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">关闭</button>
+    </div>
+</div>
+<% } %>

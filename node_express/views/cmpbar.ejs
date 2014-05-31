@@ -1,0 +1,68 @@
+<% if (cse_res.isdebug) { %>
+<div id="rankcmpbar" class="navbar navbar-fixed-bottom">
+  <div class="navbar-inner">
+    <div class="container">
+    <div class="row-fluid">
+      <div class="span3 rankcmp">
+        <div id="onecmpdoc0" class="onecmpdoc row-fluid ">
+            <div class="icon span4">
+                <img src=""></img>
+            </div>
+            <div class="cmpinfo span4">
+            </div>
+        </div>
+      </div>
+
+      <div class="span3 rankcmp">
+        <div id="onecmpdoc1" class="onecmpdoc row-fluid ">
+            <div class="icon span4">
+                <img src=""></img>
+            </div>
+            <div class="cmpinfo span4">
+            </div>
+        </div>
+      </div>
+
+      <div class="span3 rankcmp">
+        <div id="onecmpdoc2" class="onecmpdoc row-fluid ">
+            <div class="icon span4">
+                <img src=""></img>
+            </div>
+            <div class="cmpinfo span4">
+            </div>
+        </div>
+      </div>
+
+
+      <div class="span3 text-center rankcontrol">
+        <div class="operator">
+        <button id="begincmp" class="btn btn-danger" onclick="onBeginCmp()" >对比</button>
+        <button id="closecmp" class="btn btn-info" onclick="rankcmpbarclose()">关闭</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+$(function() {
+<% var obj = cse_res %>
+<% if (obj) { %>
+<% for(var i=0; i<obj.retNum;++i) { %>
+    <% doc = obj['result' + i ] %>
+    <% if (doc.debugInfo.cmpdebug) { %>
+    <% resultkey = "resultkey" + (i+1) %>
+    $('#<%= resultkey %>').data("cmpdebug",{
+            "weightval" : <%= JSON.stringify(doc.debugInfo.cmpdebug.weightval) %>,
+            "weightset" : <%= JSON.stringify(doc.debugInfo.cmpdebug.weightset) %>
+        });
+    <% } %>
+<% } %>
+<% } %>
+})
+</script>
+<script src="/javascripts/ichart.1.1.min.js"></script>
+
+<% } %>

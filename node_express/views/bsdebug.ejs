@@ -1,0 +1,11 @@
+<% if (bsdebug) { %>
+<div class="container-fluid">
+    <div class="row-fluid">
+    <% for(var i=0; i<bsdebug.docDebugLog.length;++i) { %>
+        <div class="row-fluid">
+            <%= bsdebug.docDebugLog[i] %>
+        </div>
+    <% } %>
+    </div>
+</div>
+<% } %>
